@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Propuesta · Merci Chefs · Dashboard de caterings · MAE</title>
+<style>
+  :root{
+    --verde: #b2d8d0;
+    --verde-oscuro: #315f57;
+    --antracita: #2a2a2a;
+    --gris: #666666;
+    --blanco: #ffffff;
+    --gris-claro: #f5f7f6;
+    --borde: #dbe7e4;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    color: var(--antracita);
+    background: var(--blanco);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap{
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  header.hero{
+    background: linear-gradient(180deg, var(--verde) 0%, #c7e3dc 100%);
+    padding: 72px 0 56px 0;
+  }
+  header.hero .eyebrow{
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--verde-oscuro);
+    margin: 0 0 18px 0;
+  }
+  header.hero h1{
+    font-size: 38px;
+    font-weight: 800;
+    margin: 0 0 14px 0;
+    color: var(--antracita);
+    letter-spacing: -0.01em;
+  }
+  header.hero .servicio{
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--verde-oscuro);
+    margin: 0 0 20px 0;
+  }
+  header.hero p.resultado{
+    font-size: 17px;
+    color: #33413d;
+    margin: 0 0 6px 0;
+    max-width: 46ch;
+  }
+  header.hero .marca{
+    margin-top: 32px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--verde-oscuro);
+    letter-spacing: 0.02em;
+  }
+  main{
+    padding: 56px 0 24px 0;
+  }
+  section{
+    margin-bottom: 48px;
+  }
+  section h2{
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    color: var(--verde-oscuro);
+    margin: 0 0 16px 0;
+  }
+  section h3.titulo{
+    font-size: 24px;
+    font-weight: 800;
+    margin: 0 0 16px 0;
+    color: var(--antracita);
+  }
+  section p{
+    font-size: 16px;
+    color: var(--antracita);
+    margin: 0 0 14px 0;
+  }
+  .card{
+    background: var(--gris-claro);
+    border: 1px solid var(--borde);
+    border-radius: 16px;
+    padding: 28px;
+  }
+  ul.entregables{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  ul.entregables li{
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--borde);
+    font-size: 16px;
+  }
+  ul.entregables li:last-child{ border-bottom: none; }
+  ul.entregables li .check{
+    flex: 0 0 auto;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--verde);
+    color: var(--verde-oscuro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+    margin-top: 2px;
+  }
+  .fases{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .fase{
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 14px;
+    padding: 20px 22px;
+  }
+  .fase .num{
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--verde-oscuro);
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+  }
+  .fase .desc{
+    font-size: 15px;
+    color: var(--gris);
+    margin: 0;
+  }
+  .inversion-box{
+    background: var(--antracita);
+    color: var(--blanco);
+    border-radius: 18px;
+    padding: 36px 28px;
+    text-align: center;
+  }
+  .inversion-box .label{
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--verde);
+    margin-bottom: 12px;
+  }
+  .inversion-box .precio{
+    font-size: 44px;
+    font-weight: 800;
+    margin: 0 0 8px 0;
+  }
+  .inversion-box .modalidad{
+    font-size: 15px;
+    color: #d7e5e2;
+    margin: 0;
+  }
+  .razones{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .razon{
+    padding-left: 18px;
+    border-left: 3px solid var(--verde);
+  }
+  .razon strong{
+    display:block;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+  .razon span{
+    font-size: 15px;
+    color: var(--gris);
+  }
+  .cta{
+    background: var(--gris-claro);
+    border: 1px solid var(--borde);
+    border-radius: 18px;
+    padding: 40px 28px;
+    text-align: center;
+  }
+  .cta p{
+    font-size: 17px;
+    margin: 0 0 22px 0;
+  }
+  .cta a.boton{
+    display: inline-block;
+    background: var(--verde-oscuro);
+    color: var(--blanco);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 16px 36px;
+    border-radius: 999px;
+    transition: opacity 0.15s ease;
+  }
+  .cta a.boton:hover{ opacity: 0.9; }
+  footer{
+    padding: 32px 0 56px 0;
+    text-align: center;
+    color: var(--gris);
+    font-size: 13px;
+  }
+  .slogan{
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--verde-oscuro);
+    margin-top: 6px;
+  }
+  @media (max-width: 600px){
+    header.hero{ padding: 48px 0 40px 0; }
+    header.hero h1{ font-size: 28px; }
+    header.hero .servicio{ font-size: 17px; }
+    section h3.titulo{ font-size: 20px; }
+    .card{ padding: 20px; }
+    .inversion-box .precio{ font-size: 34px; }
+    .cta{ padding: 30px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Propuesta</p>
+    <h1>Merci Chefs</h1>
+    <p class="servicio">Dashboard de caterings</p>
+    <p class="resultado">Un panel para ver de un vistazo en qué punto está cada evento y cada catering partner, sin tener que ir revisando conversaciones sueltas.</p>
+    <p class="marca">MAE — Marisa Aragüés</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section>
+    <h2>1. El punto de partida</h2>
+    <h3 class="titulo">Cada evento pasa por varias manos y varios canales</h3>
+    <p>Desde que llevo la gestión comercial de Merci Chefs como Account Manager, veo el mismo patrón todas las semanas: un brief llega, se cualifica, se busca el catering partner adecuado y se hace seguimiento hasta que el evento queda cerrado. Todo eso es información valiosa, pero hoy vive repartida entre mensajes, correos y notas sueltas.</p>
+    <p>El resultado es que saber "cómo va" un evento concreto, o cuántos están abiertos ahora mismo, exige pararse a reconstruir la historia en lugar de mirarlo directamente.</p>
+  </section>
+
+  <section>
+    <h2>2. La solución propuesta</h2>
+    <h3 class="titulo">Un panel único con el estado real de cada evento</h3>
+    <p>Voy a montar un dashboard que centraliza la información que ya manejamos en el día a día: qué eventos hay, en qué fase está cada uno, qué catering partner lo lleva y qué queda pendiente. No sustituye el trato personalizado con clientes y caterings partners: lo apoya, para que la visión de conjunto esté siempre a mano sin depender de la memoria.</p>
+  </section>
+
+  <section>
+    <div class="card">
+      <h2>3. Qué incluye</h2>
+      <ul class="entregables">
+        <li><span class="check">✓</span><span>Panel centralizado con el listado de eventos y su estado actual</span></li>
+        <li><span class="check">✓</span><span>Vista clara de qué catering partner está asignado a cada evento</span></li>
+        <li><span class="check">✓</span><span>Registro de la información clave de cada colaboración en un único sitio</span></li>
+        <li><span class="check">✓</span><span>Filtros para localizar rápido un evento, un cliente o un catering partner</span></li>
+        <li><span class="check">✓</span><span>Configuración adaptada a cómo trabajáis hoy, sin cambiar vuestros procesos actuales</span></li>
+        <li><span class="check">✓</span><span>Instrucciones breves de uso para el equipo</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>4. Cómo trabajaremos</h2>
+    <div class="fases">
+      <div class="fase">
+        <div class="num">01 · Diagnóstico</div>
+        <p class="desc">Reviso con vosotros cómo se organiza hoy la información de cada evento y qué necesita verse en el panel.</p>
+      </div>
+      <div class="fase">
+        <div class="num">02 · Propuesta y configuración</div>
+        <p class="desc">Defino la estructura del dashboard: qué campos, qué estados y qué vistas tiene sentido incluir.</p>
+      </div>
+      <div class="fase">
+        <div class="num">03 · Implementación</div>
+        <p class="desc">Construyo el panel y lo cargo con la información de los eventos activos.</p>
+      </div>
+      <div class="fase">
+        <div class="num">04 · Entrega</div>
+        <p class="desc">Comprobamos juntos que el panel refleja la realidad y os dejo las instrucciones para usarlo día a día.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>5. Inversión</h2>
+    <div class="inversion-box">
+      <div class="label">Precio</div>
+      <div class="precio">300 € + IVA</div>
+      <p class="modalidad">Pago único</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>6. Por qué trabajar conmigo</h2>
+    <div class="razones">
+      <div class="razon">
+        <strong>Ya conozco vuestra operativa</strong>
+        <span>Llevo la gestión comercial de Merci Chefs como Account Manager, así que este panel nace de cómo trabajáis de verdad, no de una suposición.</span>
+      </div>
+      <div class="razon">
+        <strong>Más de 17 años de experiencia administrativa real</strong>
+        <span>Antes de automatizar nada, entiendo el proceso desde dentro: facturación, contratos y seguimiento comercial.</span>
+      </div>
+      <div class="razon">
+        <strong>Una única responsable durante todo el proyecto</strong>
+        <span>Del diagnóstico a la entrega, hablas siempre conmigo. Nada se pierde entre intermediarios.</span>
+      </div>
+      <div class="razon">
+        <strong>Alcance claro, sin sorpresas</strong>
+        <span>Lo que ves aquí es lo que se entrega. Si algo se sale del alcance, se habla antes de tocarlo.</span>
+      </div>
+    </div>
+    <p class="slogan">Menos humo, más orden.</p>
+  </section>
+
+  <section>
+    <div class="cta">
+      <p>Si la propuesta encaja, escríbeme por WhatsApp y concretamos el inicio.</p>
+      <a class="boton" href="https://wa.me/34623796880" target="_blank" rel="noopener">Hablar con Marisa</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  MAE — Marisa Aragüés
+</footer>
+
+</body>
+</html>
