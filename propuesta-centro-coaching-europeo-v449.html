@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Propuesta · Centro de Coaching Europeo · Automatización Na-Grow a Brevo · MAE</title>
+<style>
+  :root{
+    --verde: #b2d8d0;
+    --verde-oscuro: #315f57;
+    --antracita: #2a2a2a;
+    --gris: #666666;
+    --blanco: #ffffff;
+    --gris-claro: #f5f7f6;
+    --borde: #dbe7e4;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    color: var(--antracita);
+    background: var(--blanco);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap{
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  header.hero{
+    background: linear-gradient(180deg, var(--verde) 0%, #c7e3dc 100%);
+    padding: 72px 0 56px 0;
+  }
+  header.hero .eyebrow{
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--verde-oscuro);
+    margin: 0 0 18px 0;
+  }
+  header.hero h1{
+    font-size: 38px;
+    font-weight: 800;
+    margin: 0 0 14px 0;
+    color: var(--antracita);
+    letter-spacing: -0.01em;
+  }
+  header.hero .servicio{
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--verde-oscuro);
+    margin: 0 0 20px 0;
+  }
+  header.hero p.resultado{
+    font-size: 17px;
+    color: #33413d;
+    margin: 0 0 6px 0;
+    max-width: 46ch;
+  }
+  header.hero .marca{
+    margin-top: 32px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--verde-oscuro);
+    letter-spacing: 0.02em;
+  }
+  main{
+    padding: 56px 0 24px 0;
+  }
+  section{
+    margin-bottom: 48px;
+  }
+  section h2{
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    color: var(--verde-oscuro);
+    margin: 0 0 16px 0;
+  }
+  section h3.titulo{
+    font-size: 24px;
+    font-weight: 800;
+    margin: 0 0 16px 0;
+    color: var(--antracita);
+  }
+  section p{
+    font-size: 16px;
+    color: var(--antracita);
+    margin: 0 0 14px 0;
+  }
+  .card{
+    background: var(--gris-claro);
+    border: 1px solid var(--borde);
+    border-radius: 16px;
+    padding: 28px;
+  }
+  ul.entregables{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  ul.entregables li{
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--borde);
+    font-size: 16px;
+  }
+  ul.entregables li:last-child{ border-bottom: none; }
+  ul.entregables li .check{
+    flex: 0 0 auto;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--verde);
+    color: var(--verde-oscuro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+    margin-top: 2px;
+  }
+  .fases{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .fase{
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 14px;
+    padding: 20px 22px;
+  }
+  .fase .num{
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--verde-oscuro);
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+  }
+  .fase .desc{
+    font-size: 15px;
+    color: var(--gris);
+    margin: 0;
+  }
+  .inversion-box{
+    background: var(--antracita);
+    color: var(--blanco);
+    border-radius: 18px;
+    padding: 36px 28px;
+    text-align: center;
+  }
+  .inversion-box .label{
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--verde);
+    margin-bottom: 12px;
+  }
+  .inversion-box .precio{
+    font-size: 44px;
+    font-weight: 800;
+    margin: 0 0 8px 0;
+  }
+  .inversion-box .modalidad{
+    font-size: 15px;
+    color: #d7e5e2;
+    margin: 0;
+  }
+  .razones{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .razon{
+    padding-left: 18px;
+    border-left: 3px solid var(--verde);
+  }
+  .razon strong{
+    display:block;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+  .razon span{
+    font-size: 15px;
+    color: var(--gris);
+  }
+  .cta{
+    background: var(--gris-claro);
+    border: 1px solid var(--borde);
+    border-radius: 18px;
+    padding: 40px 28px;
+    text-align: center;
+  }
+  .cta p{
+    font-size: 17px;
+    margin: 0 0 22px 0;
+  }
+  .cta a.boton{
+    display: inline-block;
+    background: var(--verde-oscuro);
+    color: var(--blanco);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 16px 36px;
+    border-radius: 999px;
+    transition: opacity 0.15s ease;
+  }
+  .cta a.boton:hover{ opacity: 0.9; }
+  footer{
+    padding: 32px 0 56px 0;
+    text-align: center;
+    color: var(--gris);
+    font-size: 13px;
+  }
+  .slogan{
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--verde-oscuro);
+    margin-top: 6px;
+  }
+  @media (max-width: 600px){
+    header.hero{ padding: 48px 0 40px 0; }
+    header.hero h1{ font-size: 28px; }
+    header.hero .servicio{ font-size: 17px; }
+    section h3.titulo{ font-size: 20px; }
+    .card{ padding: 20px; }
+    .inversion-box .precio{ font-size: 34px; }
+    .cta{ padding: 30px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Propuesta</p>
+    <h1>Centro de Coaching Europeo</h1>
+    <p class="servicio">Automatización de clientes recibidos por Na-Grow a Brevo</p>
+    <p class="resultado">Que cada cliente que entra por Na-Grow llegue a Brevo solo, completo y a tiempo, sin copiar datos a mano.</p>
+    <p class="marca">MAE — Marisa Aragüés</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section>
+    <h2>1. El punto de partida</h2>
+    <h3 class="titulo">Los clientes entran por un sitio y la comunicación se hace en otro</h3>
+    <p>Los clientes que llegan a través de Na-Grow tienen que acabar en Brevo para poder comunicaros con ellos. Mientras ese paso dependa de que alguien exporte, copie o revise contactos a mano, siempre hay riesgo: contactos que no se pasan, que se pasan tarde, que se duplican o que llegan con datos incompletos.</p>
+    <p>Y cuando un contacto no está en Brevo, no recibe lo que le corresponde. No por falta de interés, sino porque se ha quedado por el camino.</p>
+  </section>
+
+  <section>
+    <h2>2. La solución propuesta</h2>
+    <h3 class="titulo">Un paso automático entre Na-Grow y Brevo</h3>
+    <p>Dejo configurado el traspaso para que cada cliente recibido por Na-Grow se registre automáticamente en Brevo, con los datos que necesitáis y en el lugar correcto. Vosotros seguís trabajando igual; la diferencia es que ese paso deja de depender de la memoria o de una tarea manual.</p>
+    <p>Antes de dar nada por terminado, lo pruebo con casos reales y os dejo explicado cómo funciona y qué revisar si algo cambia.</p>
+  </section>
+
+  <section>
+    <div class="card">
+      <h2>3. Qué incluye</h2>
+      <ul class="entregables">
+        <li><span class="check">✓</span><span>Revisión de qué información llega desde Na-Grow y qué necesitáis tener en Brevo</span></li>
+        <li><span class="check">✓</span><span>Correspondencia clara entre los datos de origen y los campos de Brevo</span></li>
+        <li><span class="check">✓</span><span>Traspaso automático de cada cliente recibido por Na-Grow a Brevo</span></li>
+        <li><span class="check">✓</span><span>Asignación del contacto a la lista que acordemos en Brevo</span></li>
+        <li><span class="check">✓</span><span>Control para evitar contactos duplicados</span></li>
+        <li><span class="check">✓</span><span>Pruebas completas antes de dejarlo en marcha</span></li>
+        <li><span class="check">✓</span><span>Instrucciones breves para saber cómo funciona y qué revisar</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>4. Cómo trabajaremos</h2>
+    <div class="fases">
+      <div class="fase">
+        <div class="num">01 · Diagnóstico</div>
+        <p class="desc">Reviso cómo llegan hoy los clientes por Na-Grow y cómo tenéis organizado Brevo.</p>
+      </div>
+      <div class="fase">
+        <div class="num">02 · Propuesta y configuración</div>
+        <p class="desc">Definimos qué datos se pasan, a qué lista y con qué reglas.</p>
+      </div>
+      <div class="fase">
+        <div class="num">03 · Implementación</div>
+        <p class="desc">Monto la automatización y la pruebo con contactos reales.</p>
+      </div>
+      <div class="fase">
+        <div class="num">04 · Entrega</div>
+        <p class="desc">Comprobamos juntos que funciona y os dejo las instrucciones.</p>
+      </div>
+    </div>
+    <p style="margin-top:18px;font-size:15px;color:var(--gris);">El trabajo arranca en cuanto dispongo de los accesos necesarios a Na-Grow y Brevo. Los datos de contacto se tratarán conforme al RGPD.</p>
+  </section>
+
+  <section>
+    <h2>5. Inversión</h2>
+    <div class="inversion-box">
+      <div class="label">Precio</div>
+      <div class="precio">390 €</div>
+      <p class="modalidad">Pago único</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>6. Por qué trabajar conmigo</h2>
+    <div class="razones">
+      <div class="razon">
+        <strong>Conozco vuestro seguimiento comercial</strong>
+        <span>Ya he trabajado en la organización del seguimiento de leads del centro, así que parto de cómo trabajáis de verdad.</span>
+      </div>
+      <div class="razon">
+        <strong>Más de 17 años de experiencia operativa real</strong>
+        <span>Administración, clientes y procesos llevados desde dentro de una empresa. Primero entiendo el proceso; después decido qué merece la pena automatizar.</span>
+      </div>
+      <div class="razon">
+        <strong>Una única responsable durante todo el proyecto</strong>
+        <span>Del diagnóstico a la entrega, hablas siempre conmigo.</span>
+      </div>
+      <div class="razon">
+        <strong>Alcance claro, sin sorpresas</strong>
+        <span>Lo que ves aquí es lo que se entrega. Si algo se sale del alcance, se habla antes de tocarlo.</span>
+      </div>
+    </div>
+    <p class="slogan">Yo me encargo. Tú respira.</p>
+  </section>
+
+  <section>
+    <div class="cta">
+      <p>Si la propuesta encaja, escríbeme por WhatsApp y concretamos el inicio.</p>
+      <a class="boton" href="https://wa.me/34623796880" target="_blank" rel="noopener">Hablar con Marisa</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  MAE — Marisa Aragüés
+</footer>
+
+</body>
+</html>
